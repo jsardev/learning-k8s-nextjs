@@ -1,0 +1,15 @@
+replicaCount: 1
+
+image:
+  repository: localhost:5000/nextjs
+  tag: latest
+
+service:
+  port: 3000
+
+ingress:
+  enabled: true
+  hosts:
+    - host: localhost
+      paths:
+      - path: /
