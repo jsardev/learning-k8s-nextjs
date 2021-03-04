@@ -12,11 +12,19 @@ spec:
         app: nextjs
     spec:
       containers:
-      - name: nextjs
-        image: localhost:5000/nextjs
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 3000
+        - name: nextjs
+          image: localhost:5000/nextjs:1.4
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
+          env:
+            - name: LINK_TEXT
+              value: Click me!
+            - name: LINK_HREF
+              valueFrom:
+                configMapKeyRef:
+                  name: nextjs-config
+                  key: link_href

@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: localhost:5000/nextjs
-  tag: latest
+  tag: 1.4
 
 service:
   port: 3000
@@ -13,3 +13,15 @@ ingress:
     - host: localhost
       paths:
       - path: /
+
+configMap:
+  link_href: https://google.com
+
+env:
+  - name: LINK_TEXT
+    value: Click me!
+  - name: LINK_HREF
+    valueFrom:
+      configMapKeyRef:
+        name: nextjs-config
+        key: link_href

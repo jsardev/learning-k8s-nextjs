@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "nextjs.fullname" . }}
+{{- with .Values.configMap }}
+data:
+  {{- toYaml . | nindent 4 }}
+{{- end }}  
+ 
